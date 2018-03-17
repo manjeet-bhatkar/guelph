@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Guelph</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'bootstrap.min.css', 'bootstrap.techie.css' %>
+    <%= javascript_include_tag 'application' %>
+
+    <style>
+      body,
+      html {
+        overflow-x: hidden
+      }
+
+      /*body {
+        padding: 60px 20px 0
+      }*/
+
+      footer {
+        border-top: 1px solid #ddd;
+        padding: 30px;
+        margin-top: 50px
+      }
+
+      .row>[class*=col-] {
+        margin-bottom: 40px
+      }
+
+      .navbar-container {
+        position: relative;
+        min-height: 100px
+      }
+
+      .navbar.navbar-fixed-bottom,
+      .navbar.navbar-fixed-top {
+        position: absolute;
+        top: 50px;
+        z-index: 0
+      }
+
+      .navbar.navbar-fixed-bottom .container,
+      .navbar.navbar-fixed-top .container {
+        max-width: 90%
+      }
+
+      .btn-group {
+        margin-bottom: 10px
+      }
+
+      .form-inline input[type=password],
+      .form-inline input[type=text],
+      .form-inline select {
+        width: 180px
+      }
+
+      .input-group {
+        margin-bottom: 10px
+      }
+
+      .pagination {
+        margin-top: 0
+      }
+
+      .navbar-inverse {
+        margin: 110px 0
+      }
+
+      .form-group.required .control-label:after {
+        content:"*";
+        color:red;
+      }
+    </style>
+  </head>
+
+  <body>
+	  <div class="container">
+		  <div class='row'>
+		  	<div class='col-sm-12 col-lg-12'>
+		  	<h1>Guelph Sikh Society</h1>
+		  	</div>
+		  </div>
+      <div class="row">
+        <div class="col-sm-12 col-lg-12">
+          <%= link_to('Login as Admin', new_admin_session_path, class: 'pull-right')  %> 
+        </div>
+      </div>
+		  <div class='row'>
+		  	<div class="col-sm-12 col-lg-12">
+		      <div class="row">
+		        <div class="col-lg-offset-2 col-sm-offset-2 col-sm-8 col-lg-8">
+		        	<div class="row well">
+		        		<%= yield %>
+		        	</div>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+  </body>
+</html>

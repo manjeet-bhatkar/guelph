@@ -1,0 +1,33 @@
+<%= render '/layouts/alert', notice: notice %>
+
+<h1>Donations</h1>
+<div class="col-sm-12 col-lg-12">
+  <table class='table table-bordered'>
+    <thead>
+      <tr>
+        <th>Donar</th>
+        <th>Amount</th>
+        <th>Donation date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @donations.each do |donation| %>
+        <tr>
+          <td><%= donation.contact.full_name %></td>
+          <td>$<%= donation.amount %></td>
+          <td><%= donation.donation_date.to_date %></td>
+          <td>
+            <div class="btn-group">
+              <%= link_to 'Download Receipt', donation, class: 'btn btn-sm btn-info' %>
+              <%= link_to 'View', donation_path(donation), class: 'btn btn-sm btn-primary' %>
+              <%= link_to 'Edit', edit_donation_path(donation), class: 'btn btn-sm btn-warning' %>
+              <%= link_to 'Delete', donation, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

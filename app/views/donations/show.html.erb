@@ -1,0 +1,31 @@
+<%= render '/layouts/alert', notice: notice %>
+<p>
+  <strong>Donar:</strong>
+  <%= @donation.contact.full_name %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  $<%= @donation.amount %>
+</p>
+
+<p>
+  <strong>Donation date:</strong>
+  <%= @donation.donation_date.to_date %>
+</p>
+
+<p>
+  <strong>Donation purpose:</strong>
+  <%= @donation.payment_purpose.name %>
+</p>
+
+<p>
+  <strong>Donation mode:</strong>
+  <%= @donation.payment_mode.name %>
+</p>
+
+<div class="btn-group">
+	<%= link_to 'Record Another Donation', new_donation_path(contact_id: @donation.contact.id), class: 'btn btn-info' %>
+	<%= link_to 'Edit', edit_donation_path(@donation), class: 'btn btn-warning' %>
+	<%= link_to 'Back', donations_path, class: 'btn btn-primary' %>
+</div>

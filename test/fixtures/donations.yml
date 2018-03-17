@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 9.99
+  donation_date: 2018-02-24 15:18:43
+  contact_id: 1
+
+two:
+  amount: 9.99
+  donation_date: 2018-02-24 15:18:43
+  contact_id: 1

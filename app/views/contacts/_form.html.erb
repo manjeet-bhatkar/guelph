@@ -1,0 +1,59 @@
+<%= form_for(contact, html: {class: 'form-horizontal'}) do |f| %>
+  <% if contact.errors.any? %>
+      <div class="col-lg-offset-2 col-lg-7">
+        <div class="alert alert-danger">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <ul>
+          <% contact.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+  <% end %>
+
+  <div class="col-sm-8 col-lg-8" data-effect="slide-right">
+    <div class="form-group required">
+      <%= f.label :first_name, class: 'col-lg-4 control-label' %>
+      <div class="col-lg-8">
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group required">
+      <%= f.label :last_name, class: 'col-lg-4 control-label' %>
+      <div class="col-lg-8">
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group required">
+      <%= f.label :phone, class: 'col-lg-4 control-label' %>
+      <div class="col-lg-8">
+        <%= f.text_field :phone, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group required">
+      <%= f.label :email, class: 'col-lg-4 control-label' %>
+      <div class="col-lg-8">
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address, class: 'col-lg-4 control-label' %>
+      <div class="col-lg-8">
+        <%= f.text_area :address, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-lg-offset-4 col-lg-8">
+        <%= f.submit 'Submit', class: 'btn btn-info' %>
+        <%= link_to 'Cancel', contacts_path, class:  'btn btn-danger' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
