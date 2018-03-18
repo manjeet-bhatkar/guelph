@@ -5,18 +5,17 @@
     <div class="list-group">
       <a href="#" class="list-group-item active"> Today's top 5 donations</a>
       <% @todays.each do |donation| %>
-      	<a href="#" class="list-group-item"><span class="badge">$<%= donation.amount %></span><%= donation.contact.full_name  %></a>
+      	<a href="/donations/<%= donation.id %>" class="list-group-item"><span class="badge">$<%= donation.amount %></span><%= donation.contact.full_name  %></a>
       <% end %>
     </div>
   </div>
 
   <div class="col-sm-6 col-lg-6">
     <div class="list-group">
-      <a href="#" class="list-group-item active"> Top 5 donars of the year</a>
-      <a href="#" class="list-group-item"><span class="badge">$100</span>Manjeet</a>
-      <a href="#" class="list-group-item"><span class="badge">22</span>Morbi leo risus</a>
-      <a href="#" class="list-group-item"><span class="badge">51</span>Porta ac consectetur ac</a>
-      <a href="#" class="list-group-item"><span class="badge">99</span>Vestibulum at eros</a>
+    	<a href="#" class="list-group-item active"> Top 5 donations of the year</a>
+      <% @top_donations.each do |donation| %>
+      	<a href="/donations/<%= donation.id %>" class="list-group-item"><span class="badge">$<%= donation.amount %></span><%= donation.contact.full_name  %></a>
+      <% end %>
     </div>
   </div>
 </div>
@@ -25,11 +24,11 @@
 
 	<div class="col-sm-6 col-lg-6">
 	  <div class="list-group">
-	    <a href="#" class="list-group-item active"> Total donation in last 5 months</a>
-	    <a href="#" class="list-group-item"><span class="badge">$100</span>January</a>
-	    <a href="#" class="list-group-item"><span class="badge">22</span>Morbi leo risus</a>
-	    <a href="#" class="list-group-item"><span class="badge">51</span>Porta ac consectetur ac</a>
-	    <a href="#" class="list-group-item"><span class="badge">99</span>Vestibulum at eros</a>
+	    <a href="#" class="list-group-item active"> Total donations</a>
+	    <a href="#" class="list-group-item"><span class="badge">$<%= @current_week_donations %></span>This week</a>
+	    <a href="#" class="list-group-item"><span class="badge">$<%= @current_month_donations %></span><%= current_month_name %></a>
+	    <a href="#" class="list-group-item"><span class="badge">$<%= @last_month_donations %></span><%= last_month_name %></a>
+	    <a href="#" class="list-group-item"><span class="badge">$<%= @current_year_donations %></span><%= current_year %></a>
 	  </div>
 	</div>
 

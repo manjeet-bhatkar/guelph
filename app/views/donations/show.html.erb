@@ -1,7 +1,7 @@
 <%= render '/layouts/alert', notice: notice %>
 <p>
   <strong>Donar:</strong>
-  <%= @donation.contact.full_name %>
+  <%= link_to @donation.contact.full_name, @donation.contact %>
 </p>
 
 <p>
