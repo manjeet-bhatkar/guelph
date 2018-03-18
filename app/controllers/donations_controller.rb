@@ -40,6 +40,8 @@ class DonationsController < ApplicationController
   def create
     @donation = Donation.new(donation_params)
     @donation.donation_date = Date.today()
+    @payment_purposes = PaymentPurpose.all
+    @payment_mode = PaymentMode.all
     respond_to do |format|
       if @donation.save
         format.html { redirect_to @donation, notice: 'Donation was successfully created.' }

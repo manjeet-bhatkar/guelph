@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="form-group required">
+    <div class="form-group">
       <%= f.label :email, class: 'col-lg-4 control-label' %>
       <div class="col-lg-8">
         <%= f.text_field :email, class: 'form-control' %>
@@ -51,7 +51,11 @@
     <div class="form-group">
       <div class="col-lg-offset-4 col-lg-8">
         <%= f.submit 'Submit', class: 'btn btn-info' %>
-        <%= link_to 'Cancel', contacts_path, class:  'btn btn-danger' %>
+        <% if admin_signed_in? %>
+          <%= link_to 'Cancel', contacts_path, class:  'btn btn-danger' %>
+        <% else %>
+          <%= link_to 'Cancel', root_path, class:  'btn btn-danger' %>
+        <% end %>
       </div>
     </div>
   </div>

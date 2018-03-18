@@ -1,11 +1,29 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, only: [:show, :edit, :update, :destroy]
+  layout :resolve_layout
+
+  def resolve_layout
+    if admin_signed_in?
+      "application"
+    else
+      "donation"
+    end
+  end
 
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    if params[:term]
+      @contacts = Contact.kinda_spelled_like(params[:term])
+    else
+      @contacts = Contact.all
+    end
+    respond_to do |format|
+      format.json
+      format.html
+    end
+    print("Contact count #{@contacts.count}")
   end
 
   # GET /contacts/1
@@ -29,7 +47,11 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        if admin_signed_in?
+          format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        else
+          format.html { redirect_to new_donation_path, notice: 'Contact was successfully created.' }
+        end
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }

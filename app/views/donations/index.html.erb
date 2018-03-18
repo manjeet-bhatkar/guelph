@@ -1,6 +1,9 @@
 <%= render '/layouts/alert', notice: notice %>
 
 <h1>Donations</h1>
+<div class="col-sm-offset-9 col-sm-12 col-lg-offset-9 col-lg-12">
+  <%= link_to 'New Donation', new_donation_url, class: 'btn btn-primary' %>
+</div>
 <div class="col-sm-12 col-lg-12">
   <table class='table table-bordered'>
     <thead>

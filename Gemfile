@@ -53,5 +53,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'ransack', github: 'activerecord-hackery/ransack'
-
+# Authentication
 gem 'devise'
+# Autocomplete/Search
+gem 'pg_search'
+gem 'select2-rails'
+gem 'underscore-rails'

@@ -14,9 +14,20 @@
 
   <div class="col-sm-8 col-lg-8" data-effect="slide-right">
     <div class="form-group required">
+      <%= f.label :contact, class: 'col-lg-4 control-label' %>
+      <div class="col-lg-8">
+        <% if @donation.new_record? %>
+          <%= select_tag 'donation[contact_id]', nil, style: 'width: 100%', id: "contact_id" %>
+          <%= link_to 'Add contact', new_contact_path, class: 'btn btn-sm' %>
+        <% else %>
+          <%= @donation.contact.full_name %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-group required">
       <%= f.label :amount, class: 'col-lg-4 control-label' %>
-      <div class="col-lg-8 input-group">
-        <span class="input-group-addon">$</span>
+      <div class="col-lg-8">
         <%= f.text_field :amount, class: 'form-control' %>
       </div>
     </div>
@@ -43,14 +54,55 @@
       </div>
     </div>
 
-
-    <%= f.hidden_field :contact_id %>
-
     <div class="form-group">
       <div class="col-lg-offset-4 col-lg-8">
         <%= f.submit 'Record Donation', class: 'btn btn-info' %>
-        <%= link_to 'Cancel', donations_path, class:  'btn btn-danger' %>
+        <% if admin_signed_in? %>
+          <%= link_to 'Cancel', donations_path, class:  'btn btn-danger' %>
+        <% else %>
+          <%= link_to 'Cancel', root_path, class:  'btn btn-danger' %>
+        <% end %>
       </div>
     </div>
   </div>
 <% end %>
+<script type="text/javascript">
+  $(document).ready(function()    {
+    $( "#contact_id" ).select2({
+      theme: "bootstrap",
+      ajax: {
+        url: '/contacts',
+        data: function(params) {
+          return {
+            term: params.term
+          };
+        },
+        dataType: 'json',
+        delay: 500,
+        processResults: function(data, params) {
+          return {
+            results: _.map(data, function(el) {
+              console.log("element: ", el)
+              return {
+                id: el.id,
+                name: el.first_name + " " + el.last_name
+              };
+            })
+          };
+        },
+        cache: true
+      },
+      escapeMarkup: function(markup) {
+        return markup;
+      },
+      minimumInputLength: 2,
+      templateResult: function(item) {
+        return item.name;
+      },
+      templateSelection: function(item) {
+        return item.name;
+      }
+    });
+  });
+
+</script>
