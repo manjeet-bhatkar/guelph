@@ -79,8 +79,11 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: guelph_production
+  pool: 5
   username: guelph
   password: guelphdb@18
-  # password: <%= ENV['GUELPH_DATABASE_PASSWORD'] %>
+  host: localhost
+  port: 5432
