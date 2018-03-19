@@ -82,4 +82,5 @@ production:
   <<: *default
   database: guelph_production
   username: guelph
+  password: guelphdb@18
   # password: <%= ENV['GUELPH_DATABASE_PASSWORD'] %>
