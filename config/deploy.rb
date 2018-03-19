@@ -2,7 +2,7 @@
 lock "~> 3.10.1"
 
 set :application, "guelph"
-set :repo_url, "git@github.com:manjeet-bhatkar/guelph.git"
+set :repo_url, "https://github.com/manjeet-bhatkar/guelph.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -21,7 +21,7 @@ set :deploy_to, "/home/deploy/guelph"
 set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, "config/database.yml", "config/secrets.yml"
+# append :linked_files, "config/database.yml", "config/secrets.yml"
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
