@@ -1,4 +1,5 @@
 server '35.171.160.10', user: 'deploy', roles: %w{web app db}
+set :puma_bind, 'tcp://0.0.0.0:3000'
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
