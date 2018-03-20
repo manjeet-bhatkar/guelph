@@ -13,4 +13,15 @@ class Donation < ApplicationRecord
 	scope :for_last_month, lambda { |date=Date.today.last_month| for_date_range(date.beginning_of_month, date.end_of_month) }
 	scope :for_year_to_date, lambda { |date=Date.today| for_date_range(date.beginning_of_year, date) }
 	scope :for_current_week, lambda { |date=Date.today| for_date_range(date.beginning_of_week, date.end_of_week)}
+
+	def self.for_previous_years
+		collection = {}
+		year = Date.today.year
+		[1, 2, 3].each do |x|
+			yr = year - x
+			donation = for_year(yr).sum(:amount)
+			collection[yr] = donation
+		end
+		collection
+	end
 end

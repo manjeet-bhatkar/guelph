@@ -7,5 +7,6 @@ class DashboardController < ApplicationController
   	@last_month_donations = Donation.for_last_month.sum(:amount)
   	@current_year_donations = Donation.for_year_to_date.sum(:amount)
   	@current_week_donations  = Donation.for_current_week.sum(:amount)
+		@previous_years = Donation.for_previous_years
   end
 end
