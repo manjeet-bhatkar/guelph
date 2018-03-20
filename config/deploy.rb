@@ -1,4 +1,4 @@
-lock '3.4.0'
+lock '3.10.1'
 
 set :application, 'guelph'
 set :repo_url, 'https://github.com/manjeet-bhatkar/guelph.git' # Edit this to match your repository
