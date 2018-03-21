@@ -42,6 +42,6 @@ namespace :deploy do
     rake "db:seed"
   end
    
-  task :start do end
-	task :stop do end
+  # task :start do end
+	# task :stop do end
 end
