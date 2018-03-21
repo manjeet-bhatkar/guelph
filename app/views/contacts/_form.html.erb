@@ -12,41 +12,84 @@
       </div>
   <% end %>
 
-  <div class="col-sm-8 col-lg-8" data-effect="slide-right">
+  <div class="col-sm-12 col-lg-12" data-effect="slide-right">
     <div class="form-group required">
       <%= f.label :first_name, class: 'col-lg-4 control-label' %>
-      <div class="col-lg-8">
+      <div class="col-lg-5">
         <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :middle_name, class: 'col-lg-4 control-label' %>
+      <div class="col-lg-5">
+        <%= f.text_field :middle_name, class: 'form-control' %>
       </div>
     </div>
 
     <div class="form-group required">
       <%= f.label :last_name, class: 'col-lg-4 control-label' %>
-      <div class="col-lg-8">
+      <div class="col-lg-5">
         <%= f.text_field :last_name, class: 'form-control' %>
       </div>
     </div>
-
+    
     <div class="form-group required">
       <%= f.label :phone, class: 'col-lg-4 control-label' %>
-      <div class="col-lg-8">
+      <div class="btn-group col-lg-3" data-toggle="buttons" data-effect="fall">
+        <label class="btn btn-primary <%= 'active' if @contact.phone_type == 'mobile' %>">
+          <input type="radio" name="contact[phone_type]" value='mobile'> Mobile
+        </label>
+        <label class="btn btn-primary <%= 'active' if @contact.phone_type == 'home' %>">
+          <input type="radio" name="contact[phone_type]" value='home'> Home
+        </label>
+      </div>
+    </div>
+    <div class="form-group required">
+      <div class="col-lg-offset-4 col-lg-5">
         <%= f.text_field :phone, class: 'form-control' %>
       </div>
     </div>
 
     <div class="form-group">
       <%= f.label :email, class: 'col-lg-4 control-label' %>
-      <div class="col-lg-8">
+      <div class="col-lg-5">
         <%= f.text_field :email, class: 'form-control' %>
       </div>
     </div>
 
     <div class="form-group">
       <%= f.label :address, class: 'col-lg-4 control-label' %>
-      <div class="col-lg-8">
+      <div class="col-lg-5">
         <%= f.text_area :address, class: 'form-control' %>
       </div>
     </div>
+
+    <div class="form-group">
+      <%= f.label :member_since, class: 'col-lg-4 control-label' %>
+      <div class="col-lg-5">
+        <%= f.date_field :member_since, class: 'form-control', style: "line-height: 25px;" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :year_since_in_guelph, class: 'col-lg-4 control-label' %>
+      <div class="col-lg-5">
+        <%= f.text_field :year_since_in_guelph, class: 'form-control', style: "line-height: 25px;" %>
+      </div>
+    </div>
+
+      <div class="form-group">
+        <label class='col-lg-4 control-label'>Is life member?</label>
+        <div class="btn-group col-lg-8" data-toggle="buttons" data-effect="fall">
+          <label class="btn btn-primary <%= 'active' if @contact.is_life_member? %>">
+            <input type="radio" name="contact[is_life_member]" value='<%= true %>'> Yes
+          </label>
+          <label class="btn btn-primary <%= 'active' if !@contact.is_life_member? %>">
+            <input type="radio" name="contact[is_life_member]" value='<%= false %>'> No
+          </label>
+        </div>
+      </div>
 
     <div class="form-group">
       <div class="col-lg-offset-4 col-lg-8">

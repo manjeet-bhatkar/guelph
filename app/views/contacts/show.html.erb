@@ -6,13 +6,18 @@
 </p>
 
 <p>
+  <strong>Middle name:</strong>
+  <%= @contact.middle_name %>
+</p>
+
+<p>
   <strong>Last name:</strong>
   <%= @contact.last_name %>
 </p>
 
 <p>
   <strong>Phone:</strong>
-  <%= @contact.phone %>
+  (<%= @contact.phone_type.capitalize %>) <%= @contact.phone %>
 </p>
 
 <p>
@@ -25,8 +30,22 @@
   <%= @contact.address %>
 </p>
 
+<p>
+  <strong>Member since:</strong>
+  <%= @contact.member_since %>
+</p>
+
+<p>
+  <strong>Year since in Guelph:</strong>
+  <%= @contact.year_since_in_guelph %>
+</p>
+
+<p>
+  <strong>Life member:</strong>
+  <%= @contact.is_life_member? ? 'Yes' : 'No' %>
+</p>
+
 <div class='btn-group'>
-  <%= link_to 'Record donation', new_donation_path, class: 'btn btn-info' %>
   <%= link_to 'Edit', edit_contact_path(@contact), class: 'btn btn-warning' %>
   <%= link_to 'Delete', @contact, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
   <%= link_to 'Back', contacts_path, class: 'btn btn-primary' %>

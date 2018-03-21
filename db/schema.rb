@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180311033905) do
+ActiveRecord::Schema.define(version: 20180321194618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -38,8 +39,13 @@ ActiveRecord::Schema.define(version: 20180311033905) do
     t.string   "phone"
     t.string   "email"
     t.text     "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "middle_name"
+    t.boolean  "is_life_member"
+    t.date     "member_since"
+    t.integer  "phone_type"
+    t.string   "year_since_in_guelph"
   end
 
   create_table "donations", force: :cascade do |t|

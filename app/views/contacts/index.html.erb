@@ -19,7 +19,6 @@
           <td><%= contact.full_name %></td>
           <td>
             <div class="btn-group">
-              <%= link_to 'Record donation', new_donation_path(contact_id: contact.id), class: 'btn btn-sm btn-info' %>
               <%= link_to 'View', contact, class: 'btn btn-sm btn-primary' %>
               <%= link_to 'Edit', edit_contact_path(contact), class: 'btn btn-sm btn-warning' %>
               <%= link_to 'Delete', contact, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
