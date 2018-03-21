@@ -25,23 +25,3 @@ set :puma_workers, 0
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 set :puma_preload_app, false
-
-after "deploy", "deploy:seed"
-
-def rake( cmd )
-  run "cd #{symlink_path}; GEM_PATH=#{gems_path} RAILS_ENV=#{rails_env} #{rake_path} #{cmd}"
-end
-
-namespace :deploy do  
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-  end
-
-  task :seed, roles => :app, :except => { :no_release => true } do
-    # rake "db:migrate"
-    rake "db:seed"
-  end
-   
-  # task :start do end
-	# task :stop do end
-end
