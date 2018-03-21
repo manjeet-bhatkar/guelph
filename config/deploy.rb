@@ -1,5 +1,5 @@
 lock '3.10.1'
-load '/lib/deploy/seed'
+load "lib/deploy/seed.rb"
 set :application, 'guelph'
 set :repo_url, 'https://github.com/manjeet-bhatkar/guelph.git' # Edit this to match your repository
 set :branch, :master
