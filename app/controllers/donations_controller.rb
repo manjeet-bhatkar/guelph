@@ -24,15 +24,17 @@ class DonationsController < ApplicationController
   # GET /donations/new
   def new
     @donation = Donation.new()
-    @payment_purposes = PaymentPurpose.all
-    @payment_mode = PaymentMode.all
+    @payment_purposes = PaymentPurpose.all_active
+    @events = Event.all_active
+    @currencies = Currency.all_active
+    @payment_modes = PaymentMode.all_active
     @donation.payment_mode = PaymentMode.first
     @donation.payment_purpose = PaymentPurpose.first
+    @donation.currency = @currencies.first
   end
 
   # GET /donations/1/edit
   def edit
-    @payment_purposes = PaymentPurpose.all
   end
 
   # POST /donations
@@ -40,8 +42,10 @@ class DonationsController < ApplicationController
   def create
     @donation = Donation.new(donation_params)
     @donation.donation_date = Date.today()
-    @payment_purposes = PaymentPurpose.all
-    @payment_mode = PaymentMode.all
+    @payment_purposes = PaymentPurpose.all_active
+    @events = Event.all_active
+    @currencies = Currency.all_active
+    @payment_modes = PaymentMode.all_active
     respond_to do |format|
       if @donation.save
         format.html { redirect_to @donation, notice: 'Donation was successfully created.' }
@@ -81,12 +85,14 @@ class DonationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_donation
       @donation = Donation.find(params[:id])
-      @payment_purposes = PaymentPurpose.all
-      @payment_mode = PaymentMode.all
+      @payment_purposes = PaymentPurpose.all_active
+      @events = Event.all_active
+      @currencies = Currency.all_active
+      @payment_modes = PaymentMode.all_active
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def donation_params
-      params.require(:donation).permit(:amount, :donation_date, :contact_id, :payment_purpose_id, :payment_mode_id)
+      params.require(:donation).permit(:amount, :donation_date, :contact_id, :payment_purpose_id, :payment_mode_id, :currency_id, :event_id, :bank_name, :cheque_number)
     end
 end

@@ -6,7 +6,7 @@
 
 <p>
   <strong>Amount:</strong>
-  $<%= @donation.amount %>
+  <%= format_amount(@donation) %>
 </p>
 
 <p>
@@ -15,14 +15,31 @@
 </p>
 
 <p>
+  <strong>Event:</strong>
+  <%= @donation.event.try(:name) %>
+</p>
+
+<p>
   <strong>Donation purpose:</strong>
-  <%= @donation.payment_purpose.name %>
+  <%= @donation.payment_purpose.try(:name) %>
 </p>
 
 <p>
   <strong>Donation mode:</strong>
-  <%= @donation.payment_mode.name %>
+  <%= @donation.payment_mode.try(:name) %> 
 </p>
+
+<% if @donation.by_cheque? %>
+	<p>
+	  <strong>Bank name:</strong>
+	  <%= @donation.bank_name %> 
+	</p>
+
+	<p>
+	  <strong>Cheque number:</strong>
+	  <%= @donation.cheque_number %> 
+	</p>
+<% end %>
 
 <div class="btn-group">
 	<%= link_to 'Download Receipt', @donation, class: 'btn btn-primary' %>

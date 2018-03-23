@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321194618) do
+ActiveRecord::Schema.define(version: 20180323221753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,13 @@ ActiveRecord::Schema.define(version: 20180321194618) do
     t.string   "year_since_in_guelph"
   end
 
+  create_table "currencies", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "active",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "donations", force: :cascade do |t|
     t.decimal  "amount"
     t.date     "donation_date"
@@ -56,6 +63,17 @@ ActiveRecord::Schema.define(version: 20180321194618) do
     t.datetime "updated_at",         null: false
     t.integer  "payment_purpose_id"
     t.integer  "payment_mode_id"
+    t.integer  "currency_id"
+    t.integer  "event_id"
+    t.string   "bank_name"
+    t.string   "cheque_number"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "active",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "payment_modes", force: :cascade do |t|
@@ -63,13 +81,15 @@ ActiveRecord::Schema.define(version: 20180321194618) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "active"
   end
 
   create_table "payment_purposes", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "active",      default: false
   end
 
 end
