@@ -34,6 +34,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   def new
     @contact = Contact.new
+    @contact.phone_type = 'mobile'
   end
 
   # GET /contacts/1/edit

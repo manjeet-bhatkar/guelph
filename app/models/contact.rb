@@ -16,6 +16,6 @@ class Contact < ApplicationRecord
 	enum phone_type: { home: 0, mobile: 1 }
 
 	def full_name
-		[first_name, last_name].join(' ')
+		[first_name, middle_name, last_name].compact.join(' ')
 	end
 end

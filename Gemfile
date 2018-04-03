@@ -66,3 +66,8 @@ gem 'devise'
 gem 'pg_search'
 gem 'select2-rails'
 gem 'underscore-rails'
+
+gem 'prawn'
+gem 'responders'
+gem 'numbers_in_words'
+

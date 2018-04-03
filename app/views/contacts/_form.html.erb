@@ -37,10 +37,10 @@
     <div class="form-group required">
       <%= f.label :phone, class: 'col-lg-4 control-label' %>
       <div class="btn-group col-lg-3" data-toggle="buttons" data-effect="fall">
-        <label class="btn btn-primary <%= 'active' if @contact.phone_type == 'mobile' %>">
+        <label class="btn btn-sm btn-primary <%= 'active' if @contact.phone_type == 'mobile' %>">
           <input type="radio" name="contact[phone_type]" value='mobile'> Mobile
         </label>
-        <label class="btn btn-primary <%= 'active' if @contact.phone_type == 'home' %>">
+        <label class="btn btn-sm btn-primary <%= 'active' if @contact.phone_type == 'home' %>">
           <input type="radio" name="contact[phone_type]" value='home'> Home
         </label>
       </div>
@@ -82,10 +82,10 @@
       <div class="form-group">
         <label class='col-lg-4 control-label'>Is life member?</label>
         <div class="btn-group col-lg-8" data-toggle="buttons" data-effect="fall">
-          <label class="btn btn-primary <%= 'active' if @contact.is_life_member? %>">
+          <label class="btn btn-sm btn-primary <%= 'active' if @contact.is_life_member? %>">
             <input type="radio" name="contact[is_life_member]" value='<%= true %>'> Yes
           </label>
-          <label class="btn btn-primary <%= 'active' if !@contact.is_life_member? %>">
+          <label class="btn btn-sm btn-primary <%= 'active' if !@contact.is_life_member? %>">
             <input type="radio" name="contact[is_life_member]" value='<%= false %>'> No
           </label>
         </div>

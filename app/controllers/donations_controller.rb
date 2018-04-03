@@ -19,6 +19,17 @@ class DonationsController < ApplicationController
   # GET /donations/1
   # GET /donations/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = Receipt.new(@donation)
+        send_data pdf.render, 
+                  filename: "#{@donation.id}",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+
+      end
+    end
   end
 
   # GET /donations/new

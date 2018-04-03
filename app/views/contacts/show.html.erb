@@ -17,7 +17,7 @@
 
 <p>
   <strong>Phone:</strong>
-  (<%= @contact.phone_type.capitalize %>) <%= @contact.phone %>
+  (<%= @contact.phone_type.try(:capitalize) || 'Mobile' %>) <%= @contact.phone %>
 </p>
 
 <p>
